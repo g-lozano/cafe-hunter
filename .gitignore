@@ -1,0 +1,21 @@
+node_modules/
+.env
+*.zip
+quick_start.sh
+
+# dist
+dist/
+dist/**
+
+# local database
+mongod
+data/
+
+# backups
+*~
+
+# sourcemaps
+*.map
+
+# logs
+*.log
