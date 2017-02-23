@@ -19,7 +19,8 @@ App.propTypes = {
 
 export const createRoutes = (store) => {
   const onEnterAuth = (nextState, replace) => {
-    if (!store.getState().loggedIn) replace('/login');
+    // if (!store.getState().loggedIn) replace('/login');
+    if (!store.getState().loggedIn) replace('/main');
   };
 
   const onEnterUnauth = (nextState, replace) => {

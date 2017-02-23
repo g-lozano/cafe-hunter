@@ -28,6 +28,7 @@
   "author": "Emanuele Antonelli <joshua999x@gmail.com> (http://emant.altervista.org/)",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.15.3",
     "babel-polyfill": "^6.9.1",
     "dotenv": "^1.2.0",
     "express": "^4.12.4",

@@ -5,32 +5,35 @@ import { Link } from 'react-router';
 import React from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../actions';
+import Search from './search.jsx';
 
-const Main = ({ click, reset, clicks, user }) => (
-  <div>
-    <header>
-      <p>Welcome, <span id="display-name">{user.username}</span>!</p>
-      <Link className="menu" to="/profile">Profile</Link>
-      <p>|</p>
-      <a className="menu" href="/logout">Logout</a>
-    </header>
-
-    <div className="container">
-      <img alt="logo" src="img/clementine_150.png" />
-      <br />
-      <p className="clementine-text">Clementine.js</p>
-    </div>
-
-    <div className="container">
-      <p>You have clicked the button <span id="click-nbr">{clicks}</span> times.</p>
-      <br />
-      <div className="btn-container">
-        <button onClick={click} className="btn">CLICK ME!</button>
-        <button onClick={reset} className="btn">RESET</button>
+const Main = ({ click, reset, clicks, user }) => {
+  var userinfo = []
+  
+  if (user.username != 'guest') {
+    userinfo = (
+      <div>
+        <Link className="menu" to="/profile">Profile</Link>
+        <p>|</p>
+        <a className="menu" href="/logout">Logout</a>
       </div>
+      )
+  }
+  else
+    userinfo = <a className="menu" href="auth/twitter">Login</a>
+  
+  return (
+    <div>
+      <header>
+        <h1>Cafe Hunter</h1>
+        <p>Welcome, <span id="display-name">{user.username}</span>!</p>
+        {userinfo}
+      </header>
+      <br/><br/><br/><br/>
+      <Search />
     </div>
-  </div>
-);
+  );
+}
 
 Main.propTypes = {
   click: React.PropTypes.func.isRequired,

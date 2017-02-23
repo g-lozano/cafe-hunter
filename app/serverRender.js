@@ -24,7 +24,7 @@ const renderHelper = (res, location, routes, store) => {
       <!doctype html>
       <html>
         <head>
-          <title>Clementine-React-Redux</title>
+          <title>Cafe Hunter</title>
           <link rel="stylesheet" href="/static/style.css" media="all">
         </head>
         <body>
@@ -47,7 +47,7 @@ export default (req, res) => {
   if (req.isAuthenticated()) {
     const user = req.user.twitter;
     // redirect to main if logged in
-    if (req.url === '/login') return res.redirect(302, '/main');
+    // if (req.url === '/login') return res.redirect(302, '/main');
     Users.findOne({ 'twitter.id': user.id }, (err, response) => {
       if (err) return res.status(500).send(err.message);
       const initialState = { counter: response.nbrClicks.clicks, loggedIn: true, user };
@@ -57,7 +57,7 @@ export default (req, res) => {
     });
   } else {
     // redirect to login if not logged in
-    if (req.url !== '/login') return res.redirect(302, '/login');
+    // if (req.url !== '/login') return res.redirect(302, '/login');
     const initialState = {};
     const store = createStore(reducer, initialState);
     const routes = createRoutes(store);
