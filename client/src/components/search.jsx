@@ -2,7 +2,8 @@
 import React from 'react';
 import Input from './input.jsx';
 import Table from './table.jsx';
-import axios from 'axios';
+import ajax from '../utils/ajax.js'
+import axios from 'axios'
 
 class Search extends React.Component {
   constructor(props) {
@@ -13,21 +14,20 @@ class Search extends React.Component {
     }
   }
   handleEnter(e) {
-    if (e.key == "Enter") {
       var location = document.getElementById('location').value
-      this.setState({
-        search: 'searching...'
-      })
-  
-      var url = ''
-      axios.get(url)
-        .then(res => {
-          var users = res.data
-          this.setState({
-            search: JSON.stringify(res.data)
-          });
+      if (e.key == "Enter" && location) {
+        this.setState({
+          search: 'searching...'
         })
-    }
+        var params = '?location='+location
+        ajax('get', '/api/yelp'+params)
+          .then((data) => {
+            //format
+            this.setState({
+                  search: JSON.stringify(data)
+                })
+          })
+      }
   }
   render() {
     return (

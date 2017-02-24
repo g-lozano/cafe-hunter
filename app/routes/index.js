@@ -1,6 +1,7 @@
 
 import ClickHandler from '../controllers/clickHandler.server';
 import serverRender from '../serverRender.js';
+import RequestHandler from '../controllers/requestHandler.server';
 
 export default function (app, passport) {
   function isLoggedIn(req, res, next) {
@@ -11,6 +12,7 @@ export default function (app, passport) {
   }
 
   const clickHandler = new ClickHandler();
+  const requestHandler = new RequestHandler();
 
   app.route('/api/user')
     .get((req, res) => {
@@ -19,6 +21,9 @@ export default function (app, passport) {
       }
       return res.json({ unauth: true });
     });
+    
+  app.route('/api/yelp')
+    .get(requestHandler.getYelpData);
 
   app.route('/auth/twitter')
 		.get(passport.authenticate('twitter'));
