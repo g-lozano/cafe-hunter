@@ -1,7 +1,6 @@
 @import 'clementine.css';
-
 $test-color: #444;
-
+$result-height: 150px;
 p.info {
   padding-left: 20px;
   color: $test-color;
@@ -9,5 +8,57 @@ p.info {
 
 body {
   background-color: #181817;
+  color: white;
+}
+
+#location {
+  height: 30px;
+  width: 200px;
+}
+
+input {
+  font-size: 15px;
+}
+
+.results {
+  width: 65%;
+  margin: 0 auto;
+}
+
+.cafe-result {
+  height: $result-height;
+  margin: 15px;
+  width: 100%;
+  padding: 15px;
+  background-color: #2B2B2B;
+  border-radius:5px;
+}
+
+.cafe-result:hover {
+  background-color: gray;
+}
+
+.result-image-div {
+  float: left;
+  width: 33%;
+}
+
+.result-image {
+  height: 120px;
+  align: right;
+}
+
+.result-div {
+  text-align: left;
+  display: inline-block;
+  height: 120px;
+  width: 67%;
+}
+
+.result-image-div {
+  align: left;
+}
+
+a {
   color: white;
 }
