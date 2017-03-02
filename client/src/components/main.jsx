@@ -25,11 +25,11 @@ const Main = ({ click, reset, clicks, user }) => {
   return (
     <div>
       <header>
-        <h1>Cafe Hunter</h1>
+        <div className="main-title">Cafe Hunter</div>
         <p>Welcome, <span id="display-name">{user.username}</span>!</p>
         {userinfo}
       </header>
-      <br/><br/><br/><br/>
+      <br/><br/><br/><br/><br/><br/>
       <Search />
     </div>
   );

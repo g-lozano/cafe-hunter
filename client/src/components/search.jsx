@@ -24,17 +24,16 @@ class Search extends React.Component {
           data.businesses.forEach((cafe) => {
             cafes.push(
               <div className="cafe-result">
-                    <div className="result-image-div">
-                        <img className="result-image" src={cafe.image_url}/>
-                    </div>
-                    <div className="result-div">
-                      <div className="">
-                          <h4><a href={cafe.url}>{cafe.name}</a></h4>
-                      </div>
-                      <div className="">
-                          {cafe.location.display_address[0]}
-                      </div>
-                    </div>
+                <div className="result-image-div">
+                  <img className="result-image" src={cafe.image_url}/>
+                </div>
+                <div className="result-div">
+                  <h3><a href={cafe.url}>{cafe.name}</a></h3>
+                  {cafe.location.display_address[0]}
+                </div>
+                <div className="going-div">
+                  0 going
+                </div>
               </div>
             )
           })

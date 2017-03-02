@@ -2,6 +2,7 @@
 import ClickHandler from '../controllers/clickHandler.server';
 import serverRender from '../serverRender.js';
 import RequestHandler from '../controllers/requestHandler.server';
+import CafeFuncs from '../controllers/cafeFuncs.server';
 
 export default function (app, passport) {
   function isLoggedIn(req, res, next) {
@@ -13,6 +14,7 @@ export default function (app, passport) {
 
   const clickHandler = new ClickHandler();
   const requestHandler = new RequestHandler();
+  const cafeFuncs = new CafeFuncs();
 
   app.route('/api/user')
     .get((req, res) => {
@@ -46,6 +48,11 @@ export default function (app, passport) {
 		.get(isLoggedIn, clickHandler.getClicks)
 		.post(isLoggedIn, clickHandler.addClick)
 		.delete(isLoggedIn, clickHandler.resetClicks);
+		
+	app.route('/api/cafe')
+	  .post(isLoggedIn, cafeFuncs.updateCafe)
+	  .get(isLoggedIn, cafeFuncs.getCafeInfo)
+	  .delete(isLoggedIn, cafeFuncs.cancel)
 
   app.route('/*')
     .get(serverRender
