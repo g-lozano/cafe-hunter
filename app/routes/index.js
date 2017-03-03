@@ -50,8 +50,8 @@ export default function (app, passport) {
 		.delete(isLoggedIn, clickHandler.resetClicks);
 		
 	app.route('/api/cafe')
+	  .get(cafeFuncs.getCafeInfo)
 	  .post(isLoggedIn, cafeFuncs.updateCafe)
-	  .get(isLoggedIn, cafeFuncs.getCafeInfo)
 	  .delete(isLoggedIn, cafeFuncs.cancel)
 
   app.route('/*')
