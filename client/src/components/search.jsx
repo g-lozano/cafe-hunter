@@ -1,7 +1,8 @@
 import React from 'react';
 import Input from './input.jsx';
-import ajax from '../utils/ajax.js'
-import axios from 'axios'
+import ajax from '../utils/ajax.js';
+import axios from 'axios';
+import cookie from 'react-cookie';
 
 class Search extends React.Component {
   constructor(props) {
@@ -11,6 +12,19 @@ class Search extends React.Component {
     this.state = {
       search: ''
     }
+
+  }
+
+  componentDidMount() {
+    if (this.props.user.username != 'guest') {
+      var location = window.localStorage.getItem('ch_location')
+      document.getElementById('location').value = location
+      this.updateResults(location)
+    }
+  }
+
+  componentWillUnmount() {
+    window.localStorage.setItem('ch_location', '')
   }
 
   clickGoingHandler(e) {
@@ -28,10 +42,16 @@ class Search extends React.Component {
         })
     }
     else
-      alert('please log in')
+      window.location = window.location.origin + '/auth/twitter'
   }
-  
+
   updateResults(location) {
+    this.setState({
+      search: (<div className="loader"></div>)
+    })
+
+    window.localStorage.setItem('ch_location', location)
+
     var params = '?location=' + location
     ajax('get', '/api/yelp' + params) // get list of cafes via YELP
       .then((data) => {
@@ -72,12 +92,10 @@ class Search extends React.Component {
   handleEnter(e) {
     var location = document.getElementById('location').value
     if (e.key == "Enter" && location) {
-      this.setState({
-        search: 'searching...'
-      })
       this.updateResults(location)
     }
   }
+
   render() {
     return (
       <div>

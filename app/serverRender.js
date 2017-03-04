@@ -35,6 +35,10 @@ const renderHelper = (res, location, routes, store) => {
           <script src="/static/vendors.js"></script>
           <script src="/static/bundle.js"></script>
         </body>
+        <footer>
+          <div>Powered by <a className="yelp" href="https://www.yelp.com"><img src="https://s3-media2.fl.yelpcdn.com/assets/srv0/yelp_styleguide/17089be275f0/assets/img/logos/logo_desktop_xsmall_outline.png"/></a> </div>
+        </footer>
+        <br/><br/>
       </html>
       `);
     } else {

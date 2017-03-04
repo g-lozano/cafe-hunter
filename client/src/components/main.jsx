@@ -29,8 +29,9 @@ const Main = ({ click, reset, clicks, user }) => {
         <p>Welcome, <span id="display-name">{user.username}</span>!</p>
         {userinfo}
       </header>
-      <br/><br/><br/><br/><br/><br/>
+      <br/><br/><br/><br/><br/><br/><br/><br/>
       <Search user={user}/>
+      <br/><br/><br/>
     </div>
   );
 }
