@@ -3,6 +3,7 @@ import routes from './app/routes';
 import mongoose from 'mongoose';
 import passport from 'passport';
 import session from 'express-session';
+import bodyParser from 'body-parser';
 
 const env = process.env.NODE_ENV !== 'production' ? require('dotenv') : null;
 if (env) env.load();
@@ -17,6 +18,7 @@ const app = express();
 mongoose.connect(process.env.MONGODB_URI);
 
 app.use('/', express.static(`${process.cwd()}/public`));
+app.use( bodyParser.json() );
 
 const configHotReloading =
   process.env.NODE_ENV === 'development' && !process.env.DISABLE_WEBPACK ?

@@ -30,7 +30,7 @@ const Main = ({ click, reset, clicks, user }) => {
         {userinfo}
       </header>
       <br/><br/><br/><br/><br/><br/>
-      <Search />
+      <Search user={user}/>
     </div>
   );
 }
